@@ -8,6 +8,7 @@ use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\InvestorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ProductController;
 
 
 Route::get('/', function () {
@@ -47,6 +48,13 @@ Route::get('/company', [CompanyController::class, 'index']);
 Route::put('/company', [CompanyController::class, 'update']);
 Route::post('/company/milestones', [CompanyController::class, 'storeMilestone']);
 Route::delete('/company/milestones/{id}', [CompanyController::class, 'destroyMilestone']);
+
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{id}', [ProductController::class, 'show']);
+Route::put('/products/{id}', [ProductController::class, 'update']);
+Route::post('/products/{id}/tasks', [ProductController::class, 'storeTask']);
+Route::post('/products/{id}/features', [ProductController::class, 'storeFeature']);
+Route::post('/products/{id}/bugs', [ProductController::class, 'storeBug']);
 });
 
 require __DIR__.'/auth.php';
