@@ -7,9 +7,11 @@ use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\InvestorController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompanyController;
+
 
 Route::get('/', function () {
-    return view('welcome');
+    return auth()->check() ? redirect('/dashboard') : redirect('/login');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -40,6 +42,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+Route::get('/company', [CompanyController::class, 'index']);
+Route::put('/company', [CompanyController::class, 'update']);
+Route::post('/company/milestones', [CompanyController::class, 'storeMilestone']);
+Route::delete('/company/milestones/{id}', [CompanyController::class, 'destroyMilestone']);
 });
 
 require __DIR__.'/auth.php';
