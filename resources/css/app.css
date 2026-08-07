@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+    --color-pg-blue: #1B5E8C;
+    --color-pg-blue-light: #EAF2F8;
+    --color-pg-orange: #E67E22;
+    --color-pg-orange-light: #FDF0E4;
+    --color-pg-green: #3E8E41;
+    --color-pg-green-light: #EAF6EA;
+    --color-pg-bg: #F4F6F8;
+    --color-pg-text: #2D3436;
+    --color-pg-muted: #6B7280;
+    --color-pg-border: #E5E8EC;
+}
