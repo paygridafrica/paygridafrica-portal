@@ -5,6 +5,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Dashboard' }} — PayGrid Africa HQ Portal</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <style>[x-cloak] { display: none !important; }</style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -15,9 +17,9 @@
         {{-- SIDEBAR --}}
         <aside :class="sidebarOpen ? 'w-64' : 'w-20'" class="bg-white border-r border-pg-border flex flex-col transition-all duration-200 shrink-0">
             <div class="h-16 flex items-center px-4 border-b border-pg-border">
-                <span x-show="sidebarOpen" class="font-bold text-pg-blue text-lg">PayGrid <span class="text-pg-orange">Africa</span></span>
-                <span x-show="!sidebarOpen" class="font-bold text-pg-blue text-lg">PG</span>
-            </div>
+    <img x-show="sidebarOpen" src="/images/logo.png" alt="PayGrid Africa" class="h-8">
+    <img x-show="!sidebarOpen" src="/images/logo.png" alt="PayGrid Africa" class="h-8 w-8 object-cover object-left">
+</div>
 
             <nav class="flex-1 overflow-y-auto py-4 space-y-1 text-sm">
                 @php
