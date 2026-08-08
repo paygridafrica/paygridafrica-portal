@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FinanceController;
+use App\Http\Controllers\CalendarController;
 
 
 Route::get('/', function () {
@@ -63,6 +64,8 @@ Route::post('/finance/transactions', [FinanceController::class, 'storeTransactio
 Route::delete('/finance/transactions/{id}', [FinanceController::class, 'destroyTransaction']);
 Route::post('/finance/funding-requests', [FinanceController::class, 'storeFundingRequest']);
 Route::delete('/finance/funding-requests/{id}', [FinanceController::class, 'destroyFundingRequest']);
+
+Route::get('/calendar', [CalendarController::class, 'index']);
 });
 
 require __DIR__.'/auth.php';

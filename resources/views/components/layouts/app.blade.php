@@ -21,15 +21,16 @@
                 <img x-show="!sidebarOpen" src="/images/logo.png" alt="PayGrid Africa" class="h-8 w-8 object-cover object-left">
             </div>
             <div x-show="sidebarOpen" class="px-4 py-2 border-b border-pg-border">
-                <p class="text-[11px] uppercase tracking-wide text-pg-muted font-medium">Founder Portal</p>
+                <p class="text-[11px] uppercase tracking-wide text-pg-muted font-medium">PaygridAfrica Portal</p>
             </div>
 
             <nav class="flex-1 overflow-y-auto py-4 space-y-5 text-sm">
                 @php
                     $navGroups = [
                         'Overview' => [
-                            ['label' => 'Executive Dashboard', 'route' => '/dashboard'],
-                        ],
+    ['label' => 'Executive Dashboard', 'route' => '/dashboard'],
+    ['label' => 'Calendar', 'route' => '/calendar'],
+],
                         'Company' => [
                             ['label' => 'Company Management', 'route' => '/company'],
                             ['label' => 'Product Management', 'route' => '/products'],
