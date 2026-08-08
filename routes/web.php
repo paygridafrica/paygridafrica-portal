@@ -13,6 +13,7 @@ use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\RoadmapController;
 use App\Http\Controllers\LegalController;
+use App\Http\Controllers\ResearchController;
 
 
 Route::get('/', function () {
@@ -79,6 +80,12 @@ Route::delete('/legal/documents/{id}', [LegalController::class, 'destroyDocument
 Route::post('/legal/compliance', [LegalController::class, 'storeCompliance']);
 Route::patch('/legal/compliance/{id}/toggle', [LegalController::class, 'toggleCompliance']);
 Route::delete('/legal/compliance/{id}', [LegalController::class, 'destroyCompliance']);
+
+Route::get('/research', [ResearchController::class, 'index']);
+Route::post('/research/competitors', [ResearchController::class, 'storeCompetitor']);
+Route::delete('/research/competitors/{id}', [ResearchController::class, 'destroyCompetitor']);
+Route::post('/research/notes', [ResearchController::class, 'storeNote']);
+Route::delete('/research/notes/{id}', [ResearchController::class, 'destroyNote']);
 });
 
 require __DIR__.'/auth.php';
