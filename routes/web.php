@@ -14,6 +14,7 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\RoadmapController;
 use App\Http\Controllers\LegalController;
 use App\Http\Controllers\ResearchController;
+use App\Http\Controllers\DocumentController;
 
 
 Route::get('/', function () {
@@ -86,6 +87,11 @@ Route::post('/research/competitors', [ResearchController::class, 'storeCompetito
 Route::delete('/research/competitors/{id}', [ResearchController::class, 'destroyCompetitor']);
 Route::post('/research/notes', [ResearchController::class, 'storeNote']);
 Route::delete('/research/notes/{id}', [ResearchController::class, 'destroyNote']);
+
+Route::get('/documents', [DocumentController::class, 'index']);
+Route::post('/documents', [DocumentController::class, 'store']);
+Route::get('/documents/{id}/download', [DocumentController::class, 'download']);
+Route::delete('/documents/{id}', [DocumentController::class, 'destroy']);
 });
 
 require __DIR__.'/auth.php';
