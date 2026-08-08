@@ -11,6 +11,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\RoadmapController;
 
 
 Route::get('/', function () {
@@ -66,6 +67,10 @@ Route::post('/finance/funding-requests', [FinanceController::class, 'storeFundin
 Route::delete('/finance/funding-requests/{id}', [FinanceController::class, 'destroyFundingRequest']);
 
 Route::get('/calendar', [CalendarController::class, 'index']);
+
+Route::get('/roadmap', [RoadmapController::class, 'index']);
+Route::post('/roadmap/objectives', [RoadmapController::class, 'storeObjective']);
+Route::delete('/roadmap/objectives/{id}', [RoadmapController::class, 'destroyObjective']);
 });
 
 require __DIR__.'/auth.php';
