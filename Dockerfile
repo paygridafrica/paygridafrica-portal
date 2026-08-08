@@ -9,12 +9,16 @@ RUN npm run build
 # ---- Stage 2: PHP application ----
 FROM php:8.2-cli
 
-# System dependencies + PHP extensions Laravel needs
+# System dependencies + build tools needed to compile the mongodb PECL extension
 RUN apt-get update && apt-get install -y \
     git unzip libzip-dev libpng-dev libonig-dev libxml2-dev \
-    && docker-php-ext-install pdo mbstring exif pcntl bcmath gd zip \
-    && pecl install mongodb \
-    && docker-php-ext-enable mongodb
+    build-essential autoconf pkg-config libssl-dev libcurl4-openssl-dev \
+    && docker-php-ext-install pdo mbstring exif pcntl bcmath gd zip
+
+# Install and enable the mongodb extension, then verify it actually loaded
+RUN pecl install mongodb \
+    && docker-php-ext-enable mongodb \
+    && php -r 'if (!extension_loaded("mongodb")) { fwrite(STDERR, "mongodb extension failed to load\n"); exit(1); } echo "mongodb extension loaded OK\n";'
 
 # Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
