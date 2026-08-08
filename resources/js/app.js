@@ -56,4 +56,20 @@ document.addEventListener('DOMContentLoaded', () => {
             options: { plugins: { legend: { position: 'bottom' } } },
         });
     }
+
+    // Global loading overlay — fires on every real form submit across the whole app
+    document.addEventListener('submit', (e) => {
+        const form = e.target;
+        if (form.tagName !== 'FORM') return;
+
+        const overlay = document.getElementById('global-loading-overlay');
+        if (overlay) overlay.classList.remove('hidden');
+
+        // Prevent double-submits by disabling the button that was clicked
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-60', 'cursor-not-allowed');
+        }
+    });
 });
