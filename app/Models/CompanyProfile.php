@@ -24,6 +24,10 @@ class CompanyProfile extends Model
         'company_status',
 'strategic_phase',
 'weekly_progress_percent',
+'swot_strengths',
+'swot_weaknesses',
+'swot_opportunities',
+'swot_threats',
     ];
 
     protected $casts = [

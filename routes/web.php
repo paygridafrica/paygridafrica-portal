@@ -16,6 +16,7 @@ use App\Http\Controllers\LegalController;
 use App\Http\Controllers\ResearchController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\WorkspaceController;
 
 
 Route::get('/', function () {
@@ -97,6 +98,18 @@ Route::delete('/documents/{id}', [DocumentController::class, 'destroy']);
 Route::get('/media', [MediaController::class, 'index']);
 Route::post('/media', [MediaController::class, 'store']);
 Route::delete('/media/{id}', [MediaController::class, 'destroy']);
+
+Route::get('/workspace', [WorkspaceController::class, 'index']);
+Route::post('/workspace/notes', [WorkspaceController::class, 'storeNote']);
+Route::delete('/workspace/notes/{id}', [WorkspaceController::class, 'destroyNote']);
+Route::post('/workspace/goals', [WorkspaceController::class, 'storeGoal']);
+Route::patch('/workspace/goals/{id}/toggle', [WorkspaceController::class, 'toggleGoal']);
+Route::delete('/workspace/goals/{id}', [WorkspaceController::class, 'destroyGoal']);
+Route::post('/workspace/decisions', [WorkspaceController::class, 'storeDecision']);
+Route::delete('/workspace/decisions/{id}', [WorkspaceController::class, 'destroyDecision']);
+Route::post('/workspace/risks', [WorkspaceController::class, 'storeRisk']);
+Route::delete('/workspace/risks/{id}', [WorkspaceController::class, 'destroyRisk']);
+Route::put('/workspace/swot', [WorkspaceController::class, 'updateSwot']);
 });
 
 require __DIR__.'/auth.php';
