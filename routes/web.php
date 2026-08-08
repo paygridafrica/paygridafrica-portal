@@ -9,6 +9,7 @@ use App\Http\Controllers\InvestorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\FinanceController;
 
 
 Route::get('/', function () {
@@ -55,6 +56,13 @@ Route::put('/products/{id}', [ProductController::class, 'update']);
 Route::post('/products/{id}/tasks', [ProductController::class, 'storeTask']);
 Route::post('/products/{id}/features', [ProductController::class, 'storeFeature']);
 Route::post('/products/{id}/bugs', [ProductController::class, 'storeBug']);
+
+Route::get('/finance', [FinanceController::class, 'index']);
+Route::put('/finance/settings', [FinanceController::class, 'updateSettings']);
+Route::post('/finance/transactions', [FinanceController::class, 'storeTransaction']);
+Route::delete('/finance/transactions/{id}', [FinanceController::class, 'destroyTransaction']);
+Route::post('/finance/funding-requests', [FinanceController::class, 'storeFundingRequest']);
+Route::delete('/finance/funding-requests/{id}', [FinanceController::class, 'destroyFundingRequest']);
 });
 
 require __DIR__.'/auth.php';
