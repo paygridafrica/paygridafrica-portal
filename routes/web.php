@@ -17,6 +17,7 @@ use App\Http\Controllers\ResearchController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\WorkspaceController;
+use App\Http\Controllers\ReportController;
 
 
 Route::get('/', function () {
@@ -110,6 +111,8 @@ Route::delete('/workspace/decisions/{id}', [WorkspaceController::class, 'destroy
 Route::post('/workspace/risks', [WorkspaceController::class, 'storeRisk']);
 Route::delete('/workspace/risks/{id}', [WorkspaceController::class, 'destroyRisk']);
 Route::put('/workspace/swot', [WorkspaceController::class, 'updateSwot']);
+
+Route::get('/reports', [ReportController::class, 'index']);
 });
 
 require __DIR__.'/auth.php';

@@ -30,6 +30,7 @@
                         'Overview' => [
     ['label' => 'Executive Dashboard', 'route' => '/dashboard'],
     ['label' => 'Calendar', 'route' => '/calendar'],
+    ['label' => 'Reports', 'route' => '/reports'],
 ],
                         'Company' => [
                             ['label' => 'Company Management', 'route' => '/company'],
