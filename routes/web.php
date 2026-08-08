@@ -15,6 +15,7 @@ use App\Http\Controllers\RoadmapController;
 use App\Http\Controllers\LegalController;
 use App\Http\Controllers\ResearchController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\MediaController;
 
 
 Route::get('/', function () {
@@ -92,6 +93,10 @@ Route::get('/documents', [DocumentController::class, 'index']);
 Route::post('/documents', [DocumentController::class, 'store']);
 Route::get('/documents/{id}/download', [DocumentController::class, 'download']);
 Route::delete('/documents/{id}', [DocumentController::class, 'destroy']);
+
+Route::get('/media', [MediaController::class, 'index']);
+Route::post('/media', [MediaController::class, 'store']);
+Route::delete('/media/{id}', [MediaController::class, 'destroy']);
 });
 
 require __DIR__.'/auth.php';
