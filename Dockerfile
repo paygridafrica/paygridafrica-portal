@@ -27,7 +27,7 @@ WORKDIR /var/www/html
 
 # Install PHP dependencies first (better Docker layer caching)
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
+RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction --ignore-platform-req=ext-mongodb
 
 # Copy the rest of the app
 COPY . .
