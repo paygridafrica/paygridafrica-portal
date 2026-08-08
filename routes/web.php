@@ -12,6 +12,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\RoadmapController;
+use App\Http\Controllers\LegalController;
 
 
 Route::get('/', function () {
@@ -71,6 +72,13 @@ Route::get('/calendar', [CalendarController::class, 'index']);
 Route::get('/roadmap', [RoadmapController::class, 'index']);
 Route::post('/roadmap/objectives', [RoadmapController::class, 'storeObjective']);
 Route::delete('/roadmap/objectives/{id}', [RoadmapController::class, 'destroyObjective']);
+
+Route::get('/legal', [LegalController::class, 'index']);
+Route::post('/legal/documents', [LegalController::class, 'storeDocument']);
+Route::delete('/legal/documents/{id}', [LegalController::class, 'destroyDocument']);
+Route::post('/legal/compliance', [LegalController::class, 'storeCompliance']);
+Route::patch('/legal/compliance/{id}/toggle', [LegalController::class, 'toggleCompliance']);
+Route::delete('/legal/compliance/{id}', [LegalController::class, 'destroyCompliance']);
 });
 
 require __DIR__.'/auth.php';

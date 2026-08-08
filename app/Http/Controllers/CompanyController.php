@@ -34,6 +34,9 @@ class CompanyController extends Controller
             'trademark_status' => 'nullable|string',
             'trademark_number' => 'nullable|string',
             'brand_guidelines_notes' => 'nullable|string',
+            'company_status' => 'nullable|string|max:255',
+'strategic_phase' => 'nullable|string|max:255',
+'weekly_progress_percent' => 'nullable|integer|min:0|max:100',
         ]);
 
         // Turn the textarea (one value per line) into a clean array

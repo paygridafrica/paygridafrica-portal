@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Meeting;
 use App\Models\Investor;
 use App\Models\Partnership;
+use App\Models\CompanyProfile;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        $companyProfile = CompanyProfile::firstOrCreate([]);
+
         $kpis = [
             ['label' => 'Meetings', 'value' => Meeting::count(), 'change' => $this->weeklyChange(Meeting::class)],
             ['label' => 'Investors', 'value' => Investor::count(), 'change' => $this->weeklyChange(Investor::class)],
@@ -44,7 +47,7 @@ class DashboardController extends Controller
         // Latest activity = most recent meetings, investors, partnerships combined
         $activity = $this->recentActivity();
 
-        return view('dashboard.index', compact('kpis', 'monthlyProgress', 'pipeline', 'tasks', 'activity'));
+        return view('dashboard.index', compact('kpis', 'monthlyProgress', 'pipeline', 'tasks', 'activity', 'companyProfile'));
     }
 
     private function weeklyChange(string $model): string

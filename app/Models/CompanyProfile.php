@@ -21,6 +21,9 @@ class CompanyProfile extends Model
         'trademark_status',      // e.g. Not Filed, Filed, Registered
         'trademark_number',
         'brand_guidelines_notes',
+        'company_status',
+'strategic_phase',
+'weekly_progress_percent',
     ];
 
     protected $casts = [

@@ -13,6 +13,25 @@
     <form action="/company" method="POST" class="bg-white rounded-xl border border-pg-border shadow-sm p-6 mb-6 space-y-5">
         @csrf
         @method('PUT')
+        <h2 class="font-semibold text-pg-text">Status Overview</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <div>
+        <label class="text-sm font-medium text-pg-text">Company Status</label>
+        <input type="text" name="company_status" value="{{ old('company_status', $profile->company_status) }}" placeholder="e.g. Active — Building"
+               class="mt-1 w-full px-3 py-2 border border-pg-border rounded-lg text-sm">
+    </div>
+    <div>
+        <label class="text-sm font-medium text-pg-text">Strategic Phase</label>
+        <input type="text" name="strategic_phase" value="{{ old('strategic_phase', $profile->strategic_phase) }}" placeholder="e.g. Phase 2: Pilot Preparation"
+               class="mt-1 w-full px-3 py-2 border border-pg-border rounded-lg text-sm">
+    </div>
+    <div>
+        <label class="text-sm font-medium text-pg-text">Weekly Progress (%)</label>
+        <input type="number" name="weekly_progress_percent" min="0" max="100" value="{{ old('weekly_progress_percent', $profile->weekly_progress_percent) }}"
+               class="mt-1 w-full px-3 py-2 border border-pg-border rounded-lg text-sm">
+    </div>
+</div>
+<hr class="border-pg-border">
 
         <h2 class="font-semibold text-pg-text">Mission, Vision & Values</h2>
 

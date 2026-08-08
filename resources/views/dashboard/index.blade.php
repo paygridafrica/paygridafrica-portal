@@ -5,31 +5,31 @@
         <p class="text-pg-muted text-sm mt-1">Here's where PayGrid Africa stands today.</p>
     </div>
 
-    {{-- STATUS STRIP --}}
+{{-- STATUS STRIP --}}
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div class="bg-white rounded-xl border border-pg-border shadow-sm p-5">
-            <p class="text-xs text-pg-muted font-medium">COMPANY STATUS</p>
-            <p class="text-lg font-semibold text-pg-green mt-1">Active — Building</p>
-        </div>
-        <div class="bg-white rounded-xl border border-pg-border shadow-sm p-5">
-            <p class="text-xs text-pg-muted font-medium">STRATEGIC PHASE</p>
-            <p class="text-lg font-semibold text-pg-blue mt-1">Phase 2: Pilot Preparation</p>
-        </div>
-        <div class="bg-white rounded-xl border border-pg-border shadow-sm p-5">
-            <p class="text-xs text-pg-muted font-medium">WEEKLY PROGRESS</p>
-            <p class="text-lg font-semibold text-pg-orange mt-1">72% of weekly goals</p>
-        </div>
-    </div>
-
-    {{-- KPI GRID --}}
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
-        @foreach ($kpis as $kpi)
-            <div class="bg-white rounded-xl border border-pg-border shadow-sm p-4">
-                <p class="text-xs text-pg-muted font-medium">{{ strtoupper($kpi['label']) }}</p>
-                <p class="text-2xl font-bold text-pg-text mt-1">{{ $kpi['value'] }}</p>
-                <p class="text-xs text-pg-green mt-1">{{ $kpi['change'] }}</p>
+        <div class="bg-white rounded-xl border border-pg-border shadow-sm p-5 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-pg-green-light flex items-center justify-center text-pg-green shrink-0">●</div>
+            <div>
+                <p class="text-xs text-pg-muted font-medium">Company Status</p>
+                <p class="text-sm font-semibold text-pg-text mt-0.5">{{ $companyProfile->company_status ?: 'Not set' }}</p>
             </div>
-        @endforeach
+        </div>
+        <div class="bg-white rounded-xl border border-pg-border shadow-sm p-5 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-pg-blue-light flex items-center justify-center text-pg-blue shrink-0">◆</div>
+            <div>
+                <p class="text-xs text-pg-muted font-medium">Strategic Phase</p>
+                <p class="text-sm font-semibold text-pg-text mt-0.5">{{ $companyProfile->strategic_phase ?: 'Not set' }}</p>
+            </div>
+        </div>
+        <div class="bg-white rounded-xl border border-pg-border shadow-sm p-5 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-pg-orange-light flex items-center justify-center text-pg-orange shrink-0 text-xs font-bold">
+                {{ $companyProfile->weekly_progress_percent ?? '—' }}%
+            </div>
+            <div>
+                <p class="text-xs text-pg-muted font-medium">Weekly Progress</p>
+                <p class="text-sm font-semibold text-pg-text mt-0.5">{{ $companyProfile->weekly_progress_percent !== null ? 'On track this week' : 'Not set' }}</p>
+            </div>
+        </div>
     </div>
 
     {{-- CHARTS --}}
